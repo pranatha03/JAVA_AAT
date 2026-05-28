@@ -1,0 +1,22 @@
+import java.util.*;
+
+public class SortFilter {
+
+    public static ArrayList<Expense> sortByAmount(ArrayList<Expense> expenses) {
+
+        ArrayList<Expense> sorted = new ArrayList<>(expenses);
+
+        sorted.sort(Comparator.comparingDouble(e -> e.amount));
+
+        return sorted;
+    }
+
+    public static ArrayList<Expense> sortByDate(ArrayList<Expense> expenses) {
+
+        ArrayList<Expense> sorted = new ArrayList<>(expenses);
+
+        sorted.sort(Comparator.comparing(e -> e.date));
+
+        return sorted;
+    }
+}
