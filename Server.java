@@ -14,8 +14,9 @@ public class Server {
 
     public static void main(String[] args) throws Exception {
 
-        HttpServer server = HttpServer.create(new InetSocketAddress(8080), 0);
-
+       int port = System.getenv("PORT") != null ?
+           Integer.parseInt(System.getenv("PORT")) : 8080;
+HttpServer server = HttpServer.create(new InetSocketAddress(port), 0);
         // ── Routes ────────────────────────────────────────────────
         server.createContext("/api/expenses",  new ExpenseHandler());
         server.createContext("/api/summary",   new SummaryHandler());
