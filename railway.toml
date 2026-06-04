@@ -1,0 +1,5 @@
+[build]
+buildCommand = "javac *.java"
+
+[deploy]
+startCommand = "java -cp . Server"
