@@ -1,0 +1,22 @@
+[build]
+  publish = "public"
+
+[[redirects]]
+  from = "/dashboard"
+  to = "/dashboard.html"
+  status = 200
+
+[[redirects]]
+  from = "/reports"
+  to = "/reports.html"
+  status = 200
+
+[[redirects]]
+  from = "/budget"
+  to = "/budget.html"
+  status = 200
+
+[[redirects]]
+  from = "/add-expense"
+  to = "/add-expense.html"
+  status = 200
