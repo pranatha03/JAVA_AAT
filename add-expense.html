@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Add Expense — Expense Tracker</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css">
+<script src="/js/script.js" defer></script>
+</head>
+
+<body>
+
+<nav class="navbar">
+  <div class="logo">ExpenseTracker</div>
+  <div class="nav-links">
+    <a href="/dashboard.html">Dashboard</a>
+    <a href="/reports.html">Reports</a>
+    <a href="/budget.html">Budget</a>
+    <a href="/add-expense.html">Add Expense</a>
+  </div>
+</nav>
+
+<section class="page-header">
+  <h1>Add New Expense</h1>
+  <p>Track your spending in seconds.</p>
+</section>
+
+<div class="form-card">
+  <form id="expenseForm">
+    <label>Description</label>
+    <input id="description" type="text" placeholder="Enter expense description" required>
+
+    <label>Amount (₹)</label>
+    <input id="amount" type="number" placeholder="0.00" min="0.01" step="0.01" required>
+
+    <label>Category</label>
+    <select id="category">
+      <option>Food</option>
+      <option>Travel</option>
+      <option>Shopping</option>
+      <option>Utilities</option>
+      <option>Entertainment</option>
+      <option>Health</option>
+      <option>Education</option>
+      <option>Other</option>
+    </select>
+
+    <label>Date</label>
+    <input id="date" type="date" required>
+
+    <button type="submit">Save Expense</button>
+  </form>
+</div>
+
+</body>
+</html>

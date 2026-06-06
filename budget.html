@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Budget — Expense Tracker</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css">
+<script src="/js/script.js" defer></script>
+</head>
+
+<body>
+
+<nav class="navbar">
+  <div class="logo">ExpenseTracker</div>
+  <div class="nav-links">
+    <a href="/dashboard.html">Dashboard</a>
+    <a href="/reports.html">Reports</a>
+    <a href="/budget.html">Budget</a>
+    <a href="/add-expense.html">Add Expense</a>
+  </div>
+</nav>
+
+<section class="page-header">
+  <h1>Budget Planning</h1>
+  <p>Stay on track and avoid overspending.</p>
+</section>
+
+<section class="budget-wrapper">
+
+  <div class="budget-card">
+    <h3>Monthly Budget</h3>
+    <h1 id="budgetAmount">₹—</h1>
+    <p id="spentText">Loading...</p>
+    <div class="progress-large">
+      <div class="progress-fill" id="progressFill" style="width:0%"></div>
+    </div>
+    <div class="budget-footer">
+      <div>
+        <span>Remaining</span>
+        <h2 id="remainingAmount">₹—</h2>
+      </div>
+      <div class="status" id="statusBadge">—</div>
+    </div>
+  </div>
+
+  <div class="budget-card" style="margin-top:30px">
+    <h3>Update Monthly Budget</h3>
+    <form id="budgetForm" style="margin-top:20px;display:flex;flex-direction:column;gap:15px">
+      <label style="font-weight:500">New Budget Amount (₹)</label>
+      <input id="budgetInput" type="number" placeholder="Enter amount" min="1" step="1"
+        style="height:55px;padding:0 15px;border:1px solid #ddd;border-radius:12px;outline:none;font-size:16px">
+      <button type="submit"
+        style="height:55px;background:var(--accent);color:white;border:none;border-radius:12px;font-size:16px;font-weight:600;cursor:pointer">
+        Save Budget
+      </button>
+    </form>
+  </div>
+
+</section>
+
+</body>
+</html>
