@@ -1,41 +1,14 @@
+const API_BASE = "https://javaaat-production.up.railway.app";
+
 document.addEventListener("DOMContentLoaded", () => {
 
-    // Card animation
-    const cards = document.querySelectorAll(
-        ".card, .transaction, .form-card, .report-card, .table-card, .budget-card"
-    );
-
-    cards.forEach((card, index) => {
-
-        card.style.opacity = "0";
-        card.style.transform = "translateY(20px)";
-
-        setTimeout(() => {
-            card.style.transition = "all 0.5s ease";
-            card.style.opacity = "1";
-            card.style.transform = "translateY(0)";
-        }, index * 100);
-
-    });
-
-    // Active nav link
-    const currentPath = window.location.pathname;
-
-    document.querySelectorAll(".nav-links a").forEach(link => {
-
-        if (currentPath.includes(link.getAttribute("href"))) {
-            link.style.color = "#2e7d32";
-            link.style.fontWeight = "600";
-        }
-
-    });
-
-    // Expense form validation
     const form = document.getElementById("expenseForm");
 
     if (form) {
 
-        form.addEventListener("submit", (e) => {
+        form.addEventListener("submit", async (e) => {
+
+            e.preventDefault();
 
             const description =
                 document.getElementById("description").value.trim();
@@ -43,29 +16,54 @@ document.addEventListener("DOMContentLoaded", () => {
             const amount =
                 document.getElementById("amount").value.trim();
 
-            if (!description || !amount) {
+            const category =
+                document.getElementById("category").value;
 
-                e.preventDefault();
+            if (!description || !amount) {
                 alert("Please complete all fields.");
+                return;
+            }
+
+            const expenseData = {
+                amount: parseFloat(amount),
+                cat: category,
+                date: new Date().toISOString().split("T")[0],
+                desc: description
+            };
+
+            try {
+
+                const response = await fetch(
+                    `${API_BASE}/api/expenses`,
+                    {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify(expenseData)
+                    }
+                );
+
+                if (response.ok) {
+
+                    alert("Expense added successfully!");
+                    form.reset();
+
+                } else {
+
+                    const error = await response.text();
+                    alert("Failed: " + error);
+
+                }
+
+            } catch (err) {
+
+                console.error(err);
+                alert("Cannot connect to backend");
 
             }
 
         });
-
-    }
-
-    // Budget progress
-    const spent = document.getElementById("spent");
-    const budget = document.getElementById("budget");
-    const progress = document.querySelector(".progress-fill");
-
-    if (spent && budget && progress) {
-
-        const percentage =
-            (parseFloat(spent.textContent) /
-            parseFloat(budget.textContent)) * 100;
-
-        progress.style.width = `${percentage}%`;
 
     }
 
